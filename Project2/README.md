@@ -22,7 +22,8 @@ Webhook (Trigger, POST /webhook/ohmyvoca-usage)
       False → 아무 것도 하지 않음 (스킵)
 ```
 
-- **Trigger**: Webhook (오마이보카 서버가 신규 사용내역 발생 시 `{ "userId": "...", "detail": "..." }` 형태로 POST 호출한다고 가정)
+- **Trigger**: Webhook (오마이보카 서버가 신규 사용내역 발생 시 `{ "userId": "...", "detail": "..." }` 형태로 POST 호출한다고 **가정**)
+  - ⚠️ 오마이보카는 현재 이 웹훅을 실제로 호출하도록 연동돼 있지 않다. 즉 "사용자가 어떤 단어를 검색/학습했는지"는 오마이보카 서버 쪽에서 알 뿐, 이 자동화는 그 정보를 직접 알지 못한다. `detail` 필드는 curl로 트리거 자체를 재현하기 위해 임의로 넣은 **샘플 값**(`"apple 단어 학습 완료"` 등)일 뿐, 실제 학습 데이터가 아니다. 실서비스에 연결하려면 오마이보카 백엔드가 사용자의 학습 로그를 만들 때 이 Webhook URL로 `userId`와 실제 활동 내용을 담아 POST 요청을 보내도록 별도로 구현해야 한다 — 이번 과제 범위는 "그 요청이 오면 자동화가 올바르게 반응하는지"까지다.
 - **Action 1**: Google Sheets API로 `ohmyvoca-alerts` 탭 전체를 조회
 - **분기 로직**: Code 노드에서 해당 `userId`의 가장 최근 알림 시각을 찾아 현재 시각과의 차이(시간)를 계산 — 기록이 없거나 2시간 이상 지났으면 `shouldAlert: true`
 - **Action 2**: Slack `#notification` 채널에 알림 발송 (True일 때만)
