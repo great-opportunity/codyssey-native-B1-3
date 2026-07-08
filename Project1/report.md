@@ -72,13 +72,23 @@
 
 ---
 
-## 실행 결과 캡처 (추가 예정)
+## 실행 결과 캡처
 
-- [ ] n8n Executions 목록 — 성공 실행 캡처
-- [ ] n8n에서 실제 발송된 Slack 메시지 캡처
+- [x] n8n Executions 목록 — 성공 실행 캡처: `screenshots/n8n-executions-list.png`
+- [x] n8n 실행 상세 — True/False 두 분기 모두 성공(초록 체크) 확인: `screenshots/n8n-execution-detail-both-branches.png`
+- [x] n8n에서 실제 발송된 Slack 메시지 캡처: `screenshots/n8n-slack-message.png`
 - [ ] Google Sheets "n8n" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처
-- [ ] Make 실행 히스토리 — 라우터 경로별 통과 번들 수가 보이는 캡처
+- [x] Make 실행 히스토리 — 라우터 경로별 통과 번들 수가 보이는 캡처: `screenshots/make-flow.png`
 - [ ] Make에서 실제 발송된 Slack 메시지 캡처
 - [ ] Google Sheets "Make" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처
+
+### 분기 실행 증거 (both branches)
+
+n8n에서 IF 조건을 "삼성전자" 또는 "삼전" 포함(OR)으로 넓힌 뒤, 실제로 연합뉴스 기사 제목 `"[경제읽기] 삼전 호실적에도 전망 엇갈려...'반도체 고점론' 부각"`이 "삼전" 키워드에 매칭되어:
+
+1. True 분기 → Slack에 실제 알림 발송됨 (`screenshots/n8n-slack-message.png`)
+2. 같은 실행에서 False 분기(다른 기사들)도 Sheets에 정상 기록됨
+
+두 분기 모두 실제 데이터로 최소 1회 이상 실행된 것을 하나의 Executions 상세 화면(`screenshots/n8n-execution-detail-both-branches.png`)에서 확인할 수 있다.
 
 > 제출 전 스크린샷에 API 키·토큰·이메일 전체 주소가 노출되지 않았는지 확인할 것 (필요 시 마스킹 처리).
