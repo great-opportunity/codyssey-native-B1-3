@@ -74,7 +74,6 @@
 
 ## 실행 결과 캡처
 
-- [x] n8n Executions 목록 — 성공 실행 캡처: `screenshots/n8n-executions-list.png`
 - [x] n8n 실행 상세 — True/False 두 분기 모두 성공(초록 체크) 확인: `screenshots/n8n-execution-detail-both-branches.png`
 - [x] n8n에서 실제 발송된 Slack 메시지 캡처: `screenshots/n8n-slack-message.png`
 - [ ] Google Sheets "n8n" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처
