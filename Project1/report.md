@@ -1,7 +1,7 @@
 # 프로젝트 1: 자동화 도구 비교 구현 (n8n vs Make)
 
 ## 워크플로우
-"RSS 피드 신규 기사 감지 → 조건 분기(제목에 '삼성전자' 포함 여부) → Slack 알림 + Google Sheets 기록"
+"RSS 피드 신규 기사 감지 → 조건 분기(제목에 '삼성전자' 또는 '삼전' 포함 여부) → Slack 알림 + Google Sheets 기록"
 
 동일한 로직을 Make(클라우드 SaaS)와 n8n(셀프호스팅) 두 도구로 각각 구현했다.
 
@@ -10,9 +10,9 @@
 ## [Make 구현]
 
 - **Trigger**: RSS 앱의 "Watch RSS feed items" 모듈 (폴링 기반, 모듈 자체에 마지막으로 처리한 항목 커서가 내장되어 중복 방지)
-- **조건 분기**: Router 모듈 — 1st 경로("삼성전자" 포함) / Else 경로(불포함)
-- **Action 1**: Slack — Send a Message (1st 경로에서 실행)
-- **Action 2**: Google Sheets — Add a Row (1st 경로는 Slack 뒤에 이어서 실행, Else 경로는 단독으로 실행)
+- **조건 분기**: Router 모듈 — 1st 경로(제목에 "삼성전자" 또는 "삼전" 포함) / Else 경로(둘 다 불포함)
+- **1st 경로 (조건 충족 시)**: ① Slack — Send a Message로 알림 발송 → ② 그 뒤에 이어서 Google Sheets — Add a Row로 "알림 발송" 기록
+- **Else 경로 (조건 미충족 시)**: Slack 액션 없이, Google Sheets — Add a Row로 "스킵됨" 기록만 단독 실행
 
 **구성도**: `screenshots/make-flow.png`
 
