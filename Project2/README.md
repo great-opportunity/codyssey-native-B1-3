@@ -52,8 +52,8 @@ Gmail Trigger (1분 폴링, 안읽은 메일만, 본문 포함)
 3. 실행 #229: 두 수정 사항 반영 후 재실행 → 정상/스팸 분기 모두 의도대로 동작 확인
 
 - [ ] n8n Executions 상세 — 실행 #229에서 두 분기(정상 메일, 스팸 메일)가 각각 다른 경로를 탄 것이 보이는 캡처
-- [ ] 실제 발송된 Slack 메시지 캡처
-- [ ] Google Sheets "메일로그" 탭 — 정상 메일은 기록되지 않고 스팸 메일만 한 행 기록된 것을 보여주는 캡처
+- [x] 실제 발송된 Slack 메시지 캡처: `screenshots/slack-alert.jpg`
+- [x] Google Sheets "메일로그" 탭 — 스팸 메일이 기록된 것을 보여주는 캡처: `screenshots/mail-log-sheet.jpg`
 
 ## 보너스 2 — 실패 알림 및 재시도 전략
 

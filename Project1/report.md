@@ -86,12 +86,13 @@
 - [x] Make 워크플로우 구성 + 누적 실행 통계 — Watch RSS(17) → If-else(4) → Slack 발송(6) / Sheets 매칭 기록(9) / Sheets 스킵 기록(5) 확인: `screenshots/make-flow.png`
 - [x] n8n 최종 워크플로우 구성 + 실행 트레이스 — Schedule Trigger → RSS Read(50건) → Remove Duplicates(신규 1건만 통과) → Sort by Date → IF 분기까지 데이터가 흐르는 과정 확인: `screenshots/n8n-flow.png`
 - [ ] Google Sheets "Make" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처
-- [ ] Google Sheets "n8n" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처
+- [x] Google Sheets "n8n" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처: `screenshots/n8n-sheets-log.jpg` (※ 탭 이름이 실제로 "n8n"인지 스크린샷에 탭 바가 안 보여 미확인 — 제출 전 확인 필요)
+- [x] n8n True 분기 Slack 알림 실제 발송 캡처: `screenshots/n8n-slack-alert-true-branch.jpg`
 
 ### 분기 실행 증거 (both branches)
 
 - **Make**: 위 캡처에서 Slack 발송 6건, Sheets 매칭 기록 9건, Sheets 스킵 기록 5건이 각각 누적되어 있어, 1st(포함)/Else(불포함) 두 분기 모두 반복적으로 실행되었음을 확인할 수 있다.
-- **n8n**: 위 캡처는 한 번의 실행에서 RSS Read가 가져온 50건 중 Remove Duplicates가 신규 1건만 남기고, Sort by Date를 거쳐 IF에서 False 분기(Sheets Log - Skipped)로 흐른 사례다. True 분기(Slack + Sheets 매칭)는 이전 테스트 중 "삼전" 키워드가 실제 기사 제목(`"[경제읽기] 삼전 호실적에도 전망 엇갈려...'반도체 고점론' 부각"`)에 매칭되어 Slack 알림이 정상 발송된 적이 있으나, 해당 화면은 이번 최종본 캡처에서는 포함하지 않았다. IF 노드의 두 출력(true/false)이 각각 Slack+Sheets매칭, Sheets스킵으로 연결된 구조 자체는 워크플로우 구성도에서 확인 가능하다.
+- **n8n**: 위 캡처는 한 번의 실행에서 RSS Read가 가져온 50건 중 Remove Duplicates가 신규 1건만 남기고, Sort by Date를 거쳐 IF에서 False 분기(Sheets Log - Skipped)로 흐른 사례다. True 분기(Slack + Sheets 매칭)는 "삼전" 키워드가 실제 기사 제목(`靑 "삼전닉스 레버리지ETF, F4회의서 면밀히 살펴보고 대응"`)에 매칭되어 Slack 알림이 정상 발송된 사례를 `screenshots/n8n-slack-alert-true-branch.jpg`(Slack 메시지)와 `screenshots/n8n-sheets-log.jpg`(같은 기사가 "알림 발송"으로 시트에 기록된 행)로 함께 확인했다. IF 노드의 두 출력(true/false)이 각각 Slack+Sheets매칭, Sheets스킵으로 연결된 구조는 워크플로우 구성도에서, 실제 두 분기 모두 실행된 증거는 이 스크린샷들에서 확인 가능하다.
 
 ---
 
