@@ -33,7 +33,7 @@ Gmail Trigger (1분 폴링, 안읽은 메일만, 본문 포함)
 
 ## 구현 화면
 
-**구성도**: `screenshots/project2-flow.png` (추가 예정)
+**구성도**: `screenshots/project2-flow.jpg`
 
 ## 실행 결과 (n8n Executions에서 확인)
 
