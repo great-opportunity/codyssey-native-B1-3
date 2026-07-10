@@ -51,7 +51,7 @@ Gmail Trigger (1분 폴링, 안읽은 메일만, 본문 포함)
 2. 실행 #226: 스팸 분기에서 시트에 제목/발신자/카테고리가 빈 값으로 기록됨 → 원인은 Set 노드의 기본 옵션이 기존 필드를 모두 버리는 것이었음 → `includeOtherFields: true` 옵션 추가로 해결. 같은 실행에서 로그 사유(reason) 문구가 표현식이 아니라 코드 텍스트 그대로 저장되는 버그도 발견 → `{{ }}` 누락이 원인, 수정 후 해결
 3. 실행 #229: 두 수정 사항 반영 후 재실행 → 정상/스팸 분기 모두 의도대로 동작 확인
 
-- [ ] n8n Executions 상세 — 실행 #229에서 두 분기(정상 메일, 스팸 메일)가 각각 다른 경로를 탄 것이 보이는 캡처
+- [x] n8n Executions 상세 — 실행 #253에서 두 분기(정상 메일→슬랙 전송, 스팸 메일→시트 기록)가 한 실행 안에서 각각 다른 경로로 체크마크 찍힌 것이 보이는 캡처: `screenshots/n8n-executions-both-branches.jpg`
 - [x] 실제 발송된 Slack 메시지 캡처: `screenshots/slack-alert.jpg`
 - [x] Google Sheets "메일로그" 탭 — 스팸 메일이 기록된 것을 보여주는 캡처: `screenshots/mail-log-sheet.jpg`
 
