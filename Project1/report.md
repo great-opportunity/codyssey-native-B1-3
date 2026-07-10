@@ -86,7 +86,7 @@
 - [x] Make 워크플로우 구성 + 실행 트레이스: `screenshots/make-flow.png` (아래에 수치 해석 정정 있음)
 - [x] n8n 최종 워크플로우 구성 + 실행 트레이스 — Schedule Trigger → RSS Read(50건) → Remove Duplicates(신규 1건만 통과) → Sort by Date → IF 분기까지 데이터가 흐르는 과정 확인: `screenshots/n8n-flow.png`
 - [x] Google Sheets "Make" 탭 — `screenshots/make-sheets-log.jpg` (※ "스킵됨" 행만 존재, "알림 발송" 행은 없음 — 아래 분기 실행 증거 참고)
-- [x] Google Sheets "n8n" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처: `screenshots/n8n-sheets-log.jpg` (※ 탭 이름이 실제로 "n8n"인지 스크린샷에 탭 바가 안 보여 미확인 — 제출 전 확인 필요)
+- [x] Google Sheets "n8n" 탭 — "알림 발송" / "스킵됨" 행이 모두 보이는 캡처: `screenshots/n8n-sheets-log.jpg`
 - [x] n8n True 분기 Slack 알림 실제 발송 캡처: `screenshots/n8n-slack-alert-true-branch.jpg`
 
 ### 분기 실행 증거 (both branches)
@@ -104,7 +104,7 @@
 2. **커스텀 로직 자유도**: Project 2는 "같은 사용자 기준 2시간 이내 중복 알림 억제"라는 상태 기반 판단 로직이 필요한데, n8n의 Code 노드(자바스크립트 실행)를 쓰면 이런 로직을 자유롭게 짤 수 있다. Make에도 유사한 기능(사용자 정의 함수, Data Store)이 있지만, 무료 플랜 제약(활성 시나리오 2개, 크레딧 한도)과 웹 UI 기반 구성이라는 특성상 반복적인 로직 수정·재테스트가 n8n보다 느렸다.
 3. **API 기반 개발·테스트 workflow**: Project 1 과정에서 확인했듯 n8n은 REST API가 완전히 공개돼 있어, 워크플로우를 스크립트로 정의하고 `curl`로 즉시 트리거해 반복 테스트하는 것이 가능했다. Make는 시나리오 구조를 API로 편집할 수 없어 이런 빠른 반복 개발에는 적합하지 않았다.
 
-즉 Project 1의 비교 항목 중 "REST API 완전 공개"와 "자동화 확장성" 항목이 실제 도구 선택의 결정적 근거가 되었다. 상세 구현 내용은 `Project2/README.md` 참고.
+즉 Project 1의 비교 항목 중 "REST API 완전 공개"와 "자동화 확장성" 항목이 실제 도구 선택의 결정적 근거가 되었다. 상세 구현 내용은 `Project2/report.md` 참고.
 
 ---
 
